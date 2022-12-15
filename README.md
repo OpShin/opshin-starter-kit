@@ -1,6 +1,6 @@
 # Pycardano Starter-kit
 
-This Starter-Kit is a simple implementation of the [PyCardano](https://github.com/Python-Cardano/pycardano) library, showing how you can use it for generating addresses, querying an address utxos and submit a basic transaction to transfer ADA in between 2 addresses.
+This Starter-Kit is a small tutorial of how to use the [PyCardano](https://github.com/Python-Cardano/pycardano) library for generating addresses, querying an address utxos and submit a basic transaction to transfer ADA in between 2 addresses.
 
 PyCardano is a Cardano library written in Python. It allows users to create and sign transactions without depending on third-party Cardano serialization tools, such as cardano-cli and cardano-serialization-lib, making it a lightweight library, which is simple and fast to set up in all types of environments.
 
