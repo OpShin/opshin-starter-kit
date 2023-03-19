@@ -29,9 +29,9 @@ from src.utils import get_signing_info, get_address
     "--wait_time",
     type=int,
     default=0,
-    help="Time to wait in seconds for the validation to succeed.",
+    help="Time until the vesting contract deadline from current time",
 )
-@click.option("--ogmios", default="localhost:1337", help="Set the ogmios host")
+@click.option("--ogmios", default="ogmios-preview-api:1337", help="Set the ogmios host")
 def main(name: str, beneficiary: str, amount: int, wait_time: int, ogmios: str):
     # Load chain context
     context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)

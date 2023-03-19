@@ -21,7 +21,7 @@ from src.utils import get_signing_info, get_address
 
 @click.command()
 @click.argument("name")
-@click.option("--ogmios", default="localhost:1337", help="Set the ogmios host")
+@click.option("--ogmios", default="ogmios-preview-api:1337", help="Set the ogmios host")
 def main(name: str, ogmios):
     # Load chain context
     context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)
