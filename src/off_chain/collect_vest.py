@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 
 import click
 from pycardano import (
@@ -14,27 +15,18 @@ from pycardano import (
     VerificationKeyHash,
 )
 
-from src.utils import get_address, get_signing_info
-from src.week03 import assets_dir
-from src.week03.lecture.vesting import VestingParams
+from src.on_chain import vesting
 
 
 @click.command()
 @click.argument("name")
-@click.option(
-    "--parameterized", is_flag=True, help="If set, use parameterized vesting script."
-)
-def main(name: str, parameterized):
+@click.option("--ogmios", default="localhost:1337", help="Set the ogmios host")
+def main(name: str, ogmios):
     # Load chain context
-    context = OgmiosChainContext("ws://localhost:1337", network=Network.TESTNET)
+    context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)
 
     # Load script info
-    if parameterized:
-        script_path = assets_dir.joinpath(
-            f"parameterized_vesting_{name}", "script.cbor"
-        )
-    else:
-        script_path = assets_dir.joinpath("vesting", "script.cbor")
+    script_path = Path("./build/vesting/script.cbor")
     with open(script_path) as f:
         cbor_hex = f.read()
 
@@ -51,21 +43,16 @@ def main(name: str, parameterized):
     utxo_to_spend = None
     for utxo in context.utxos(str(script_address)):
         if utxo.output.datum:
-            if parameterized:
-                # unfortunately we can't check if deadline is passed because the params are baked into the script
+            try:
+                params = vesting.VestingParams.from_cbor(utxo.output.datum.cbor)
+            except Exception:
+                continue
+            if (
+                params.beneficiary == bytes(payment_address.payment_part)
+                and params.deadline < time.time() * 1000  # POSIXTime is in ms!
+            ):
                 utxo_to_spend = utxo
                 break
-            else:
-                try:
-                    params = VestingParams.from_cbor(utxo.output.datum.cbor)
-                except Exception:
-                    continue
-                if (
-                    params.beneficiary == bytes(payment_address.payment_part)
-                    and params.deadline < time.time() * 1000
-                ):
-                    utxo_to_spend = utxo
-                    break
     assert isinstance(utxo_to_spend, UTxO), "No script UTxOs found!"
 
     # Find a collateral UTxO

@@ -37,4 +37,6 @@ def test_signed_by_beneficiary(beneficiary, signatories):
             vesting.Spending(vesting.TxOutRef(vesting.TxId(b"00"), 0)),
         ),
     )
-    assert res == (beneficiary in signatories), "Invalid behaviour for signed_by_beneficiary"
+    assert res == (
+        beneficiary in signatories
+    ), "Invalid behaviour for signed_by_beneficiary"
