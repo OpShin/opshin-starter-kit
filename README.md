@@ -1,8 +1,12 @@
 # Pycardano Starter-kit
 
-This Starter-Kit is a small tutorial of how to use the [PyCardano](https://github.com/Python-Cardano/pycardano) library for generating addresses, querying an address utxos and submit a basic transaction to transfer ADA in between 2 addresses.
+This Starter-Kit is a small tutorial of how to use the [PyCardano](https://github.com/Python-Cardano/pycardano) library 
+with [opshin](https://github.com/OpShin/opshin) for interacting with a simple vesting contract on Cardano.
 
 PyCardano is a Cardano library written in Python. It allows users to create and sign transactions without depending on third-party Cardano serialization tools, such as cardano-cli and cardano-serialization-lib, making it a lightweight library, which is simple and fast to set up in all types of environments.
+
+opshin is a Smart Contract language based on Python. It allows users to define and compile Smart Contracts directly within a python environment.
+It also interacts seemlessly with PyCardano.
 
 ## Dev Environment
 
@@ -10,7 +14,7 @@ For executing the scripts in this starter kit you'll need access to a running [O
 
 In case you don't want to install the required components yourself, you can use [Demeter.run](https://demeter.run) platform to create a cloud environment with access to common Cardano infrastructure. The following command will open this repo in a private, web-based VSCode IDE with access to a running Ogmios instance in the preview network.
 
-[![Code in Cardano Workspace](https://demeter.run/code/badge.svg)](https://demeter.run/code?repository=https://github.com/txpipe/pycardano-starter-kit&template=python)
+[![Code in Cardano Workspace](https://demeter.run/code/badge.svg)](https://demeter.run/code?repository=https://github.com/opshin/opshin-starter-kit&template=python)
 
 
 ## What is Included

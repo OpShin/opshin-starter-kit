@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "opshin-starter-kit"
+version = "0.1.0"
+description = "A starter kit introduction into writing and interacting with Smart Contracts on Cardano through Python"
+authors = ["Niels Mündler <n.muendler@posteo.de>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "~3.8"
+opshin = "0.9.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
