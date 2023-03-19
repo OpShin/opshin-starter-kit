@@ -25,7 +25,7 @@ You can find scripts to initialize addresses and interact with the cardano-node 
 hosts tooling to interact with the contract.
 
 
-## Running the scripts
+## Setup
 
 
 1. Install Python 3.8 (Note: on Demeter.Run, python3.8 is pre-installed!).
@@ -47,3 +47,34 @@ poetry shell
 
 5. Set up ogmios. On demeter.run, ogmios is already configured for you and the defaults in this repository will assume a Demeter.Run ogmios instance.
 
+## Running the scripts
+
+Once you have entered the poetry shell, you can start interacting with the contract through the prepared scripts.
+
+First, we have to build the vesting contract and generate two key pairs, one for the
+owner of funds and one for the intended beneficiary.
+
+```bash
+python3 src/off_chain/build.py
+python3 scripts/create_key_pair.py owner
+python3 scripts/create_key_pair.py beneficiary
+```
+
+Make sure that the beneficiary address is loaded up with some testnet ada before proceeding,
+by using the [testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet).
+
+Then you can place a vested amount of ada at the contract
+
+```bash
+python3 src/off_chain/make_vest.py owner beneficiary 
+```
+
+By default the deadline is 0 seconds after the creation of the vesting, so you can directly proceed and unlock
+the vested amount with the beneficiary!
+
+```bash
+python3 src/off_chain/collect_vest.py beneficiary
+```
+
+That's it! You successfully compiled a Smart Contract on cardano and interacted with it through off-chain tooling.
+Feel free to dive into the provided scripts and start customizing them for your needs.
