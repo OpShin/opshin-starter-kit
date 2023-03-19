@@ -28,7 +28,7 @@ hosts tooling to interact with the contract.
 ## Running the scripts
 
 
-1. Install Python 3.8.
+1. Install Python 3.8 (Note: on Demeter.Run, python3.8 is pre-installed!).
 Installer [download](https://www.python.org/downloads/release/python-3810/)
 
 2. Ensure `python3.8 --version` works in your command line.
@@ -45,6 +45,5 @@ poetry install
 poetry shell
 ```
 
-> TODO instruction on setting up Ogmios / cardano-node with demeter.run (or included in package?)
+5. Set up ogmios. On demeter.run, ogmios is already configured for you and the defaults in this repository will assume a Demeter.Run ogmios instance.
 
-> TODO python3.8 and poetry and dependencies included in demeter.run?
