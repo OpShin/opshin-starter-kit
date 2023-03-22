@@ -89,7 +89,7 @@ You can find the address of the owner key by running this command
 cat keys/owner.addr
 ```
 
-After requesting ADA for the owner, send some ADA to the beneficiary. The receiver address needs a small amount of ADA
+After requesting ada for the owner, send some ada to the beneficiary. The receiver address needs a small amount of ada
 in order to provide it as collateral when unlocking the funds later.
 
 ```bash
