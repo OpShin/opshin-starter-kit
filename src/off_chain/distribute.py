@@ -1,0 +1,57 @@
+import click
+from pycardano import (
+    OgmiosChainContext,
+    Network,
+    Address,
+    TransactionBuilder,
+    TransactionOutput,
+    VerificationKeyHash,
+)
+
+from src.on_chain import vesting
+from src.utils import get_signing_info, get_address
+
+
+@click.command()
+@click.argument("name")
+@click.argument("beneficiary")
+@click.option(
+    "--amount",
+    type=int,
+    default=20000000,
+    help="Amount of lovelace to send to the script address.",
+)
+@click.option("--ogmios", default="ogmios-preview-api:1337", help="Set the ogmios host")
+def main(name: str, beneficiary: str, amount: int, ogmios: str):
+    # Load chain context
+    context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)
+
+    # Get payment address
+    payment_address = get_address(name)
+
+    # Get the beneficiary VerificationKeyHash (PubKeyHash)
+    beneficiary_address = get_address(beneficiary)
+
+    # Build the transaction
+    builder = TransactionBuilder(context)
+    builder.add_input_address(payment_address)
+    builder.add_output(
+        TransactionOutput(address=beneficiary_address, amount=amount)
+    )
+
+    # Sign the transaction
+    payment_vkey, payment_skey, payment_address = get_signing_info(name)
+    signed_tx = builder.build_and_sign(
+        signing_keys=[payment_skey],
+        change_address=payment_address,
+    )
+
+    # Submit the transaction
+    context.submit_tx(signed_tx.to_cbor())
+
+    print(f"transaction id: {signed_tx.id}")
+    print(f"Cardanoscan: https://preview.cardanoscan.io/transaction/{signed_tx.id}")
+
+
+if __name__ == "__main__":
+    main()
