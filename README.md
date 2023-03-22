@@ -28,7 +28,7 @@ hosts tooling to interact with the contract.
 ## Setup
 
 
-1. Install Python 3.10, 3.9 or 3.8.
+1. Install Python 3.8, 3.9 or 3.10.
 
 On demeter.run or Linux/Ubuntu, this version of python is usually already pre-installed. You can skip this step.
 For other Operating Systems, you can download the installer [here](https://www.python.org/downloads/release/python-3810/).
