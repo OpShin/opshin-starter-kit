@@ -8,8 +8,8 @@ readme = "README.md"
 packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
-python = "~3.8"
-opshin = "0.9.14"
+python = "~3.10"
+opshin = "0.10.0"
 click = "^8.1.3"
 
 
