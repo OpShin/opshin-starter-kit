@@ -28,8 +28,18 @@ hosts tooling to interact with the contract.
 ## Setup
 
 
-1. Install Python 3.8 (Note: on Demeter.Run, python3.8 is pre-installed!).
+1. Install Python 3.8.
 Installer [download](https://www.python.org/downloads/release/python-3810/)
+
+On demeter.run follow these instructions:
+ - open a Terminal in the browser VSCode interface (F1 -> Terminal: Create New Terminal)
+ - `wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz`
+ - `tar -xf Python-3.8.10.tgz`
+ - `cd Python-3.8.10 && ./configure --prefix=/config/.local`
+ - `make -j 8`
+ - `make install`
+ - `echo 'export PATH=/config/.local/bin:$PATH' >> ~/.bashrc`
+ - `bash`
 
 2. Ensure `python3.8 --version` works in your command line.
 In Windows, you can do this by copying the `python.exe` file to `python3.8.exe` in your `PATH` environment variable.
