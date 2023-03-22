@@ -29,23 +29,32 @@ hosts tooling to interact with the contract.
 
 
 1. Install Python 3.8.
-Installer [download](https://www.python.org/downloads/release/python-3810/)
 
-On demeter.run follow these instructions:
- - open a Terminal in the browser VSCode interface (F1 -> Terminal: Create New Terminal)
- - `wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz`
- - `tar -xf Python-3.8.10.tgz`
- - `cd Python-3.8.10 && ./configure --prefix=/config/.local`
- - `make -j 8`
- - `make install`
- - `echo 'export PATH=/config/.local/bin:$PATH' >> ~/.bashrc`
- - `bash`
+On demeter.run or Linux/Ubuntu, open a Terminal in the browser VSCode interface (F1 -> Terminal: Create New Terminal). Then run the following commands:
+```bash
+wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz
+tar -xf Python-3.8.10.tgz
+cd Python-3.8.10 && ./configure --prefix=/config/.local
+make -j 8
+make install
+echo 'export PATH=/config/.local/bin:$PATH' >> ~/.bashrc
+bash
+```
+
+For other Operating Systems, you can download the installer [here](https://www.python.org/downloads/release/python-3810/).
 
 2. Ensure `python3.8 --version` works in your command line.
 In Windows, you can do this by copying the `python.exe` file to `python3.8.exe` in your `PATH` environment variable.
 
 3. Install python poetry.
-Follow the official documentation [here](https://python-poetry.org/docs/#installation).
+
+On demeter.run or Linux/Ubuntu run 
+```bash
+curl -sSL https://install.python-poetry.org | python3.8 -
+```
+
+Otherwise, follow the official documentation [here](https://python-poetry.org/docs/#installation).
+
 
 4. Install a python virtual environment with poetry:
 ```bash
