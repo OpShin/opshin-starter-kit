@@ -64,7 +64,9 @@ poetry install
 poetry shell
 ```
 
-5. Set up ogmios. On demeter.run, ogmios is already configured for you and the defaults in this repository will assume a Demeter.Run ogmios instance.
+5. Set up ogmios. 
+
+On demeter.run, ogmios is already configured for you and the defaults in this repository will assume a demeter.run Ogmios instance.
 
 ## Running the scripts
 
