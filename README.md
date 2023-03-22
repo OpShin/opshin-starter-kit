@@ -96,8 +96,9 @@ in order to provide it as collateral when unlocking the funds later.
 python3 src/off_chain/distribute.py owner beneficiary 
 ```
 
-Then you can place a vested amount of ada at the contract. If you just requested funds for your address, you might need to wait a few minutes.
-If you run it before, you will see an error, indicating that the address lacks funds!
+Then you can place a vested amount of ada at the contract.
+If you just requested funds for the owner address, you might need to wait a few minutes or the script will display an error that funds are missing.
+
 
 ```bash
 python3 src/off_chain/make_vest.py owner beneficiary 
