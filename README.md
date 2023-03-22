@@ -81,14 +81,16 @@ python3 scripts/create_key_pair.py owner
 python3 scripts/create_key_pair.py beneficiary
 ```
 
-Make sure that the owner address is loaded up with some testnet ada before proceeding,
+Make sure that the owner and beneficiary addresses are loaded up with some testnet ada before proceeding,
 by using the [testnet faucet](https://docs.cardano.org/cardano-testnet/tools/faucet).
 You can find the address of the owner key with 
 ```bash
 cat keys/owner.addr
+cat keys/beneficiary.addr
 ```
 
-Then you can place a vested amount of ada at the contract
+Then you can place a vested amount of ada at the contract. If you just requested funds for your address, you might need to wait a few minutes.
+If you run it before, you will see an error, indicating that the address lacks funds!
 
 ```bash
 python3 src/off_chain/make_vest.py owner beneficiary 
