@@ -68,7 +68,7 @@ First, we have to build the vesting contract and generate two key pairs, one for
 owner of funds and one for the intended beneficiary.
 
 ```bash
-python3 src/off_chain/build.py
+python3 scripts/build.py
 python3 scripts/create_key_pair.py owner
 python3 scripts/create_key_pair.py beneficiary
 ```
