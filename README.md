@@ -58,7 +58,8 @@ poetry shell
 
 5. Set up ogmios. 
 
-On demeter.run, ogmios is already configured for you and the defaults in this repository will assume a demeter.run Ogmios instance.
+On demeter.run, simply add the Ogmios Extension for the Preview network
+through the project console website (the page that shows you demeter.run project -> Connected Extensions -> Browse Extensions -> Cardano Ogmios)
 
 ## Running the scripts
 
