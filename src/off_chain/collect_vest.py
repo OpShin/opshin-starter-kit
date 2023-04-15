@@ -4,7 +4,6 @@ from pathlib import Path
 import click
 from pycardano import (
     OgmiosChainContext,
-    Network,
     Address,
     TransactionBuilder,
     UTxO,
@@ -13,6 +12,7 @@ from pycardano import (
     Redeemer,
     RedeemerTag,
     VerificationKeyHash,
+    DeserializeException,
 )
 
 from src.on_chain import vesting
@@ -34,7 +34,7 @@ def main(name: str):
 
     plutus_script = PlutusV2Script(cbor)
     script_hash = plutus_script_hash(plutus_script)
-    script_address = Address(script_hash, network=Network.TESTNET)
+    script_address = Address(script_hash, network=network)
 
     # Get payment address
     payment_address = get_address(name)
@@ -45,7 +45,7 @@ def main(name: str):
         if utxo.output.datum:
             try:
                 params = vesting.VestingParams.from_cbor(utxo.output.datum.cbor)
-            except Exception:
+            except DeserializeException:
                 continue
             if (
                 params.beneficiary == bytes(payment_address.payment_part)
