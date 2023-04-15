@@ -16,15 +16,14 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
-from src.utils import get_signing_info, get_address
+from src.utils import get_signing_info, get_address, ogmios_url, network
 
 
 @click.command()
 @click.argument("name")
-@click.option("--ogmios", default="ogmios-preview-api:1337", help="Set the ogmios host")
-def main(name: str, ogmios):
+def main(name: str):
     # Load chain context
-    context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)
+    context = OgmiosChainContext(ogmios_url, network=network)
 
     # Load script info
     script_path = Path("./build/vesting/script.cbor")

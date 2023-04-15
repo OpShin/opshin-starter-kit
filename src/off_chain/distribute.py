@@ -9,7 +9,7 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
-from src.utils import get_signing_info, get_address
+from src.utils import get_signing_info, get_address, ogmios_url, network
 
 
 @click.command()
@@ -19,12 +19,11 @@ from src.utils import get_signing_info, get_address
     "--amount",
     type=int,
     default=20000000,
-    help="Amount of lovelace to send to the script address.",
+    help="Amount of lovelace to send to the beneficiary address.",
 )
-@click.option("--ogmios", default="ogmios-preview-api:1337", help="Set the ogmios host")
-def main(name: str, beneficiary: str, amount: int, ogmios: str):
+def main(name: str, beneficiary: str, amount: int):
     # Load chain context
-    context = OgmiosChainContext(f"ws://{ogmios}", network=Network.TESTNET)
+    context = OgmiosChainContext(ogmios_url, network=network)
 
     # Get payment address
     payment_address = get_address(name)
