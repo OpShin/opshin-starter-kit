@@ -65,7 +65,7 @@ def main(name: str):
     assert isinstance(non_nft_utxo, UTxO), "No collateral UTxOs found!"
 
     # Make redeemer
-    redeemer = Redeemer(RedeemerTag.SPEND, 0)
+    redeemer = Redeemer(0)
 
     # Build the transaction
     builder = TransactionBuilder(context)
