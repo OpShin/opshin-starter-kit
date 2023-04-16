@@ -77,7 +77,7 @@ def main(name: str):
     # we must specify at least the start of the tx valid range in slots
     builder.validity_start = context.last_block_slot
     # This specifies the end of tx valid range in slots
-    builder.ttl = builder.validity_start + 100
+    builder.ttl = builder.validity_start + 1000
 
     # Sign the transaction
     payment_vkey, payment_skey, payment_address = get_signing_info(name)
