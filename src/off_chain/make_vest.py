@@ -12,7 +12,7 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
-from src.utils import get_signing_info, get_address, ogmios_url, network
+from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
 
 
 @click.command()
@@ -32,7 +32,7 @@ from src.utils import get_signing_info, get_address, ogmios_url, network
 )
 def main(name: str, beneficiary: str, amount: int, wait_time: int):
     # Load chain context
-    context = OgmiosChainContext(ogmios_url, network=network)
+    context = OgmiosChainContext(ogmios_url, network=network, kupo_url=kupo_url)
 
     # Get payment address
     payment_address = get_address(name)

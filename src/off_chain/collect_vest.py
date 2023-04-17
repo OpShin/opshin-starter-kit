@@ -16,14 +16,14 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
-from src.utils import get_signing_info, get_address, ogmios_url, network
+from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
 
 
 @click.command()
 @click.argument("name")
 def main(name: str):
     # Load chain context
-    context = OgmiosChainContext(ogmios_url, network=network)
+    context = OgmiosChainContext(ogmios_url, network=network, kupo_url=kupo_url)
 
     # Load script info
     script_path = Path("./build/vesting/script.cbor")
