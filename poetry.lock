@@ -26,33 +26,33 @@ files = [
 
 [[package]]
 name = "attrs"
-version = "22.2.0"
+version = "23.1.0"
 description = "Classes Without Boilerplate"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "attrs-22.2.0-py3-none-any.whl", hash = "sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836"},
-    {file = "attrs-22.2.0.tar.gz", hash = "sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"},
+    {file = "attrs-23.1.0-py3-none-any.whl", hash = "sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04"},
+    {file = "attrs-23.1.0.tar.gz", hash = "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"},
 ]
 
 [package.extras]
-cov = ["attrs[tests]", "coverage-enable-subprocess", "coverage[toml] (>=5.3)"]
-dev = ["attrs[docs,tests]"]
-docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope.interface"]
-tests = ["attrs[tests-no-zope]", "zope.interface"]
-tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy (>=0.971,<0.990)", "mypy (>=0.971,<0.990)", "pympler", "pympler", "pytest (>=4.3.0)", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-mypy-plugins", "pytest-xdist[psutil]", "pytest-xdist[psutil]"]
+cov = ["attrs[tests]", "coverage[toml] (>=5.3)"]
+dev = ["attrs[docs,tests]", "pre-commit"]
+docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
+tests = ["attrs[tests-no-zope]", "zope-interface"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
 
 [[package]]
 name = "blockfrost-python"
-version = "0.5.2"
+version = "0.5.3"
 description = "The official Python SDK for Blockfrost API v0.1.37"
 category = "main"
 optional = false
 python-versions = ">=3.7, <4"
 files = [
-    {file = "blockfrost-python-0.5.2.tar.gz", hash = "sha256:e8c046feb542b066f9baf6dba6eed79344d10a2139f6edb638f8aee70b5b8f81"},
-    {file = "blockfrost_python-0.5.2-py3-none-any.whl", hash = "sha256:222d3ba83128cada09519115dabee915c1c7f2b8e38f0357f2829ebf0f7d80a8"},
+    {file = "blockfrost-python-0.5.3.tar.gz", hash = "sha256:3154b99867e7714c90064c9e1a37e3b7af97c107b64549dd0d424aaa3209017e"},
+    {file = "blockfrost_python-0.5.3-py3-none-any.whl", hash = "sha256:b0e73f09f1ff06977c85ccd63f6afe7ec30fa1b5c48e94a15d8bc8cf1f61997b"},
 ]
 
 [package.dependencies]
@@ -346,35 +346,31 @@ ecdsa = "*"
 
 [[package]]
 name = "cryptography"
-version = "39.0.2"
+version = "40.0.2"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "cryptography-39.0.2-cp36-abi3-macosx_10_12_universal2.whl", hash = "sha256:2725672bb53bb92dc7b4150d233cd4b8c59615cd8288d495eaa86db00d4e5c06"},
-    {file = "cryptography-39.0.2-cp36-abi3-macosx_10_12_x86_64.whl", hash = "sha256:23df8ca3f24699167daf3e23e51f7ba7334d504af63a94af468f468b975b7dd7"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_24_aarch64.whl", hash = "sha256:eb40fe69cfc6f5cdab9a5ebd022131ba21453cf7b8a7fd3631f45bbf52bed612"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bc0521cce2c1d541634b19f3ac661d7a64f9555135e9d8af3980965be717fd4a"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ffd394c7896ed7821a6d13b24657c6a34b6e2650bd84ae063cf11ccffa4f1a97"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_24_x86_64.whl", hash = "sha256:e8a0772016feeb106efd28d4a328e77dc2edae84dfbac06061319fdb669ff828"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:8f35c17bd4faed2bc7797d2a66cbb4f986242ce2e30340ab832e5d99ae60e011"},
-    {file = "cryptography-39.0.2-cp36-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:b49a88ff802e1993b7f749b1eeb31134f03c8d5c956e3c125c75558955cda536"},
-    {file = "cryptography-39.0.2-cp36-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:5f8c682e736513db7d04349b4f6693690170f95aac449c56f97415c6980edef5"},
-    {file = "cryptography-39.0.2-cp36-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:d7d84a512a59f4412ca8549b01f94be4161c94efc598bf09d027d67826beddc0"},
-    {file = "cryptography-39.0.2-cp36-abi3-win32.whl", hash = "sha256:c43ac224aabcbf83a947eeb8b17eaf1547bce3767ee2d70093b461f31729a480"},
-    {file = "cryptography-39.0.2-cp36-abi3-win_amd64.whl", hash = "sha256:788b3921d763ee35dfdb04248d0e3de11e3ca8eb22e2e48fef880c42e1f3c8f9"},
-    {file = "cryptography-39.0.2-pp38-pypy38_pp73-macosx_10_12_x86_64.whl", hash = "sha256:d15809e0dbdad486f4ad0979753518f47980020b7a34e9fc56e8be4f60702fac"},
-    {file = "cryptography-39.0.2-pp38-pypy38_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:50cadb9b2f961757e712a9737ef33d89b8190c3ea34d0fb6675e00edbe35d074"},
-    {file = "cryptography-39.0.2-pp38-pypy38_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:103e8f7155f3ce2ffa0049fe60169878d47a4364b277906386f8de21c9234aa1"},
-    {file = "cryptography-39.0.2-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:6236a9610c912b129610eb1a274bdc1350b5df834d124fa84729ebeaf7da42c3"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:e944fe07b6f229f4c1a06a7ef906a19652bdd9fd54c761b0ff87e83ae7a30354"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.manylinux_2_24_aarch64.whl", hash = "sha256:35d658536b0a4117c885728d1a7032bdc9a5974722ae298d6c533755a6ee3915"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-manylinux_2_24_x86_64.whl", hash = "sha256:30b1d1bfd00f6fc80d11300a29f1d8ab2b8d9febb6ed4a38a76880ec564fae84"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:e029b844c21116564b8b61216befabca4b500e6816fa9f0ba49527653cae2108"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:fa507318e427169ade4e9eccef39e9011cdc19534f55ca2f36ec3f388c1f70f3"},
-    {file = "cryptography-39.0.2-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:8bc0008ef798231fac03fe7d26e82d601d15bd16f3afaad1c6113771566570f3"},
-    {file = "cryptography-39.0.2.tar.gz", hash = "sha256:bc5b871e977c8ee5a1bbc42fa8d19bcc08baf0c51cbf1586b0e87a2694dde42f"},
+    {file = "cryptography-40.0.2-cp36-abi3-macosx_10_12_universal2.whl", hash = "sha256:8f79b5ff5ad9d3218afb1e7e20ea74da5f76943ee5edb7f76e56ec5161ec782b"},
+    {file = "cryptography-40.0.2-cp36-abi3-macosx_10_12_x86_64.whl", hash = "sha256:05dc219433b14046c476f6f09d7636b92a1c3e5808b9a6536adf4932b3b2c440"},
+    {file = "cryptography-40.0.2-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4df2af28d7bedc84fe45bd49bc35d710aede676e2a4cb7fc6d103a2adc8afe4d"},
+    {file = "cryptography-40.0.2-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0dcca15d3a19a66e63662dc8d30f8036b07be851a8680eda92d079868f106288"},
+    {file = "cryptography-40.0.2-cp36-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:a04386fb7bc85fab9cd51b6308633a3c271e3d0d3eae917eebab2fac6219b6d2"},
+    {file = "cryptography-40.0.2-cp36-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:adc0d980fd2760c9e5de537c28935cc32b9353baaf28e0814df417619c6c8c3b"},
+    {file = "cryptography-40.0.2-cp36-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:d5a1bd0e9e2031465761dfa920c16b0065ad77321d8a8c1f5ee331021fda65e9"},
+    {file = "cryptography-40.0.2-cp36-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:a95f4802d49faa6a674242e25bfeea6fc2acd915b5e5e29ac90a32b1139cae1c"},
+    {file = "cryptography-40.0.2-cp36-abi3-win32.whl", hash = "sha256:aecbb1592b0188e030cb01f82d12556cf72e218280f621deed7d806afd2113f9"},
+    {file = "cryptography-40.0.2-cp36-abi3-win_amd64.whl", hash = "sha256:b12794f01d4cacfbd3177b9042198f3af1c856eedd0a98f10f141385c809a14b"},
+    {file = "cryptography-40.0.2-pp38-pypy38_pp73-macosx_10_12_x86_64.whl", hash = "sha256:142bae539ef28a1c76794cca7f49729e7c54423f615cfd9b0b1fa90ebe53244b"},
+    {file = "cryptography-40.0.2-pp38-pypy38_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:956ba8701b4ffe91ba59665ed170a2ebbdc6fc0e40de5f6059195d9f2b33ca0e"},
+    {file = "cryptography-40.0.2-pp38-pypy38_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:4f01c9863da784558165f5d4d916093737a75203a5c5286fde60e503e4276c7a"},
+    {file = "cryptography-40.0.2-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:3daf9b114213f8ba460b829a02896789751626a2a4e7a43a28ee77c04b5e4958"},
+    {file = "cryptography-40.0.2-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:48f388d0d153350f378c7f7b41497a54ff1513c816bcbbcafe5b829e59b9ce5b"},
+    {file = "cryptography-40.0.2-pp39-pypy39_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:c0764e72b36a3dc065c155e5b22f93df465da9c39af65516fe04ed3c68c92636"},
+    {file = "cryptography-40.0.2-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:cbaba590180cba88cb99a5f76f90808a624f18b169b90a4abb40c1fd8c19420e"},
+    {file = "cryptography-40.0.2-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:7a38250f433cd41df7fcb763caa3ee9362777fdb4dc642b9a349721d2bf47404"},
+    {file = "cryptography-40.0.2.tar.gz", hash = "sha256:c33c0d32b8594fa647d2e01dbccc303478e16fdd7cf98652d5b3ed11aa5e5c99"},
 ]
 
 [package.dependencies]
@@ -383,10 +379,10 @@ cffi = ">=1.12"
 [package.extras]
 docs = ["sphinx (>=5.3.0)", "sphinx-rtd-theme (>=1.1.1)"]
 docstest = ["pyenchant (>=1.6.11)", "sphinxcontrib-spelling (>=4.0.1)", "twine (>=1.12.0)"]
-pep8test = ["black", "check-manifest", "mypy", "ruff", "types-pytz", "types-requests"]
+pep8test = ["black", "check-manifest", "mypy", "ruff"]
 sdist = ["setuptools-rust (>=0.11.4)"]
 ssh = ["bcrypt (>=3.1.5)"]
-test = ["hypothesis (>=1.11.4,!=3.79.2)", "iso8601", "pretend", "pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-shard (>=0.1.2)", "pytest-subtests", "pytest-xdist", "pytz"]
+test = ["iso8601", "pretend", "pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-shard (>=0.1.2)", "pytest-subtests", "pytest-xdist"]
 test-randomorder = ["pytest-randomly"]
 tox = ["tox"]
 
@@ -585,22 +581,21 @@ files = [
 
 [[package]]
 name = "opshin"
-version = "0.10.0"
+version = "0.12.5"
 description = "A simple pythonic programming language for Smart Contracts on Cardano"
 category = "main"
 optional = false
-python-versions = ">=3.8,<3.11"
+python-versions = ">=3.8,<3.12"
 files = [
-    {file = "opshin-0.10.0-py3-none-any.whl", hash = "sha256:3e7cd9eff03226b55cdec34352e198338ec706a53201b8496bc5349f9e851cde"},
-    {file = "opshin-0.10.0.tar.gz", hash = "sha256:d18d2fd5ad68a6d347cb022699cdd999206ca82c97444c36af239aa13a5376a8"},
+    {file = "opshin-0.12.5-py3-none-any.whl", hash = "sha256:699d66908030ba10a0408633715e959cfc67c3c0580cd6134bf09e10e357e8f2"},
+    {file = "opshin-0.12.5.tar.gz", hash = "sha256:33b3839e8290fe50fb24864cee650799368eb8b22dd3d9b9ef944744b5b4c830"},
 ]
 
 [package.dependencies]
-frozenlist = "1.3.3"
-pluthon = "0.3.1"
-pyaiken = "0.4.0"
-pycardano = "0.7.2"
-uplc = "0.5.6"
+frozenlist = ">=1.3.3,<2.0.0"
+pluthon = ">=0.3.3,<0.4.0"
+pycardano = ">=0.8.0,<0.9.0"
+uplc = ">=0.6.1,<0.7.0"
 
 [[package]]
 name = "oscrypto"
@@ -619,14 +614,14 @@ asn1crypto = ">=1.5.1"
 
 [[package]]
 name = "packaging"
-version = "23.0"
+version = "23.1"
 description = "Core utilities for Python packages"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "packaging-23.0-py3-none-any.whl", hash = "sha256:714ac14496c3e68c99c29b00845f7a2b85f3bb6f1078fd9f72fd20f0570002b2"},
-    {file = "packaging-23.0.tar.gz", hash = "sha256:b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"},
+    {file = "packaging-23.1-py3-none-any.whl", hash = "sha256:994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61"},
+    {file = "packaging-23.1.tar.gz", hash = "sha256:a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f"},
 ]
 
 [[package]]
@@ -647,18 +642,18 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pluthon"
-version = "0.3.1"
+version = "0.3.5"
 description = "Pluto-like programming language for Cardano Smart Contracts in Python"
 category = "main"
 optional = false
 python-versions = ">=3"
 files = [
-    {file = "pluthon-0.3.1-py3-none-any.whl", hash = "sha256:a2ccb21b254dc143e9d60a7b7e462ea7c763e1d022a65666d6e546a61a26d4a8"},
-    {file = "pluthon-0.3.1.tar.gz", hash = "sha256:e5bf06e85431541b34805871d5fa1cdb0cde291d8050f82b23f952b990df1dbb"},
+    {file = "pluthon-0.3.5-py3-none-any.whl", hash = "sha256:5bdc0aa800af5a0d9b3607c712a765da14df10c2c926764e796cd17134731eca"},
+    {file = "pluthon-0.3.5.tar.gz", hash = "sha256:d46609e574e4dc71833c5506f500523ee0c460eda9452895d328b008ab8df808"},
 ]
 
 [package.dependencies]
-uplc = "0.5.6"
+uplc = "0.6.2"
 
 [[package]]
 name = "pprintpp"
@@ -673,52 +668,19 @@ files = [
 ]
 
 [[package]]
-name = "pyaiken"
-version = "0.4.0"
-description = "Python bindings for aiken"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "pyaiken-0.4.0-cp310-cp310-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:c7cd6e02df007dff5ac7c6f80d7279857008670dfdae6793bac4634a000010db"},
-    {file = "pyaiken-0.4.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:cedfa5c1658c0e66299e2d15a4304661a63dc319aba13a7c5c69fef4c852c68b"},
-    {file = "pyaiken-0.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:abd79bffbfcf729030e3358cd772c349157576fbbcc3757720311c027d4abfaf"},
-    {file = "pyaiken-0.4.0-cp310-none-win_amd64.whl", hash = "sha256:5b9fb858b8d87148f709c53b6c9d371b2771ad6fe1183b05cfd5a330b48132fb"},
-    {file = "pyaiken-0.4.0-cp311-cp311-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:8bfe5fdeebc7d955f4d80ff3b16a2c023f975a5741ca952d5852eae7b27f51ef"},
-    {file = "pyaiken-0.4.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:308ea50c4accc6fd273f0690ce5b7d2784ffa6ce91aa9e2c9f715193fa541ee4"},
-    {file = "pyaiken-0.4.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0461ba51df27552ec94b04943e9cd5784d391a7dfbcb20936ba6e0f751caa43e"},
-    {file = "pyaiken-0.4.0-cp311-none-win_amd64.whl", hash = "sha256:7ada1ea0be5f7782d13186cd5fbce744b7446fddc8b2df03dac2df5e77148e06"},
-    {file = "pyaiken-0.4.0-cp37-cp37m-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:844e9ebbcb2574d0d5f12024fc550604adfc63535098eeef0e990aa8116f20ea"},
-    {file = "pyaiken-0.4.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:abe39b0b18b151fbdfc39ea9c458b2d77433d6f4c662b55db4a3abc9ce14da0c"},
-    {file = "pyaiken-0.4.0-cp37-none-win_amd64.whl", hash = "sha256:0aefe41206c2ecf6539480fade621e017097ea697a5101db70ba6e76b3d1eba5"},
-    {file = "pyaiken-0.4.0-cp38-cp38-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:745ae349ff0eb904a93d75f00f5b6be6076374d0b79c52820dee6df04edda8e0"},
-    {file = "pyaiken-0.4.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3d735eb81ce0aa3419094556d1df85bf2a58e6a3a4e519760097c85e69629cc9"},
-    {file = "pyaiken-0.4.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e0fe51e1e313b2fd0a7ed77cc05720258ec6a9e3309cc220cc56f6f97e679b49"},
-    {file = "pyaiken-0.4.0-cp38-none-win_amd64.whl", hash = "sha256:4a96829350e69c403d63b0efb9e2a9019d5bcbf5b3831327249f6644560ab4e7"},
-    {file = "pyaiken-0.4.0-cp39-cp39-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:ed319fdde3c736a0f3afe5e0f9a5cb2e3eaf606547eb5b03fd35e80a9dc700fd"},
-    {file = "pyaiken-0.4.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1b0368539d52f81997cb6af85179abe97a24780a80acfe3dfc8d46808e9670cc"},
-    {file = "pyaiken-0.4.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0048d65a1bed02d9a576063553103ca057c8e250114fef3f5d2553ee0b170a49"},
-    {file = "pyaiken-0.4.0-cp39-none-win_amd64.whl", hash = "sha256:8975f1d1a87c1f5f59e876522d8a3496c6f4750332f579808d4bf22ffe7144cc"},
-    {file = "pyaiken-0.4.0-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8cfbcdedd7b420a61e115d525c108e1ed9a2f54d3836715b8d1d8e25ee2615cf"},
-    {file = "pyaiken-0.4.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3d3e21f96adae2578bbaf57b27d22e0107de54a5690b19878857656f38074889"},
-    {file = "pyaiken-0.4.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f480cc52f9df0acd36ac8e3723352ce0da3a0ec724bc5f07e5b6745205615c3b"},
-    {file = "pyaiken-0.4.0.tar.gz", hash = "sha256:083b2db369fb55ad1cdf7d8f9cd9b9e0bb98c3363d5dc67a8ba1492801a72f57"},
-]
-
-[[package]]
 name = "pycardano"
-version = "0.7.2"
+version = "0.8.0"
 description = "A Cardano library in Python"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "pycardano-0.7.2-py3-none-any.whl", hash = "sha256:1cd3f7813f24f3501a229f1eb8fb3ddc4517842d792e2e0839b3c616a23a4054"},
-    {file = "pycardano-0.7.2.tar.gz", hash = "sha256:2cac70b8317f5834e1bb402e8848d7cce6f0955b643d2a52831f76f9cb4b26f1"},
+    {file = "pycardano-0.8.0-py3-none-any.whl", hash = "sha256:0d396b1589957ec084a292ef87c5ad659ad7343429e506aa66b456c8e78f3226"},
+    {file = "pycardano-0.8.0.tar.gz", hash = "sha256:f7478463a27b3bcffc901cd48a4992ed1cdc80b0c911b1c75ff46f3676c257a2"},
 ]
 
 [package.dependencies]
-blockfrost-python = "0.5.2"
+blockfrost-python = "0.5.3"
 cbor2 = ">=5.4.3,<6.0.0"
 cose = "0.9.dev8"
 ECPy = ">=1.2.5,<2.0.0"
@@ -769,18 +731,17 @@ tests = ["hypothesis (>=3.27.0)", "pytest (>=3.2.1,!=3.3.0)"]
 
 [[package]]
 name = "pytest"
-version = "7.2.2"
+version = "7.3.1"
 description = "pytest: simple powerful testing with Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.2.2-py3-none-any.whl", hash = "sha256:130328f552dcfac0b1cec75c12e3f005619dc5f874f0a06e8ff7263f0ee6225e"},
-    {file = "pytest-7.2.2.tar.gz", hash = "sha256:c99ab0c73aceb050f68929bc93af19ab6db0558791c6a0715723abe9d0ade9d4"},
+    {file = "pytest-7.3.1-py3-none-any.whl", hash = "sha256:3799fa815351fea3a5e96ac7e503a96fa51cc9942c3753cda7651b93c1cfa362"},
+    {file = "pytest-7.3.1.tar.gz", hash = "sha256:434afafd78b1d78ed0addf160ad2b77a30d35d4bdf8af234fe621919d9ed15e3"},
 ]
 
 [package.dependencies]
-attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 exceptiongroup = {version = ">=1.0.0rc8", markers = "python_version < \"3.11\""}
 iniconfig = "*"
@@ -789,7 +750,7 @@ pluggy = ">=0.12,<2.0"
 tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 
 [package.extras]
-testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
 name = "python-secp256k1-cardano"
@@ -885,22 +846,21 @@ test = ["mypy", "pytest", "typing-extensions"]
 
 [[package]]
 name = "uplc"
-version = "0.5.6"
+version = "0.6.2"
 description = "Python implementation of untyped plutus language core"
 category = "main"
 optional = false
 python-versions = ">=3"
 files = [
-    {file = "uplc-0.5.6-py3-none-any.whl", hash = "sha256:65bbd36b964ddf09d5f630d256b24b3f07b868a461a1be7306297ac15dffe8bb"},
-    {file = "uplc-0.5.6.tar.gz", hash = "sha256:6c15cf50bf90d227723222e8e5b55247fd3266261a0d4f231f8edd06031829bb"},
+    {file = "uplc-0.6.2-py3-none-any.whl", hash = "sha256:a6cdb5a221dee87b92c8b929968fa57b2ef6640d1ce424c3e4bc399d1c364b93"},
+    {file = "uplc-0.6.2.tar.gz", hash = "sha256:cd289791e7bcc09c27c362c015d82ce6dd90e21a2e6cc93f5876e829aa18a111"},
 ]
 
 [package.dependencies]
 cbor2 = "5.4.6"
 frozendict = "2.3.4"
 frozenlist = "1.3.3"
-pyaiken = "0.4.0"
-pycardano = "0.7.2"
+pycardano = "0.8.0"
 python-secp256k1-cardano = "0.2.3"
 rply = "0.7.8"
 
@@ -941,4 +901,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8, <3.11"
-content-hash = "1c8712726e7f8ff1ccef7c7e7b14c704f97a9486e8e6c3c036573492524647cc"
+content-hash = "225a084853aec5fc9487d1fab9fd4d949a90ccf6a290e32b4bece3c0909dd298"
