@@ -2,13 +2,10 @@ import click
 from pycardano import (
     OgmiosChainContext,
     Network,
-    Address,
     TransactionBuilder,
     TransactionOutput,
-    VerificationKeyHash,
 )
 
-from src.on_chain import vesting
 from src.utils import get_signing_info, get_address, ogmios_url, network
 
 
@@ -49,7 +46,10 @@ def main(name: str, beneficiary: str, amount: int):
     context.submit_tx(signed_tx.to_cbor())
 
     print(f"transaction id: {signed_tx.id}")
-    print(f"Cardanoscan: https://preview.cexplorer.io/tx/{signed_tx.id}")
+    if network == Network.TESTNET:
+        print(f"Cexplorer: https://preview.cexplorer.io/tx/{signed_tx.id}")
+    else:
+        print(f"Cexplorer: https://cexplorer.io/tx/{signed_tx.id}")
 
 
 if __name__ == "__main__":

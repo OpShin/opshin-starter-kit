@@ -1,18 +1,16 @@
-import subprocess
 import time
-from pathlib import Path
 
 import click
 from pycardano import (
     OgmiosChainContext,
-    Address,
     TransactionBuilder,
     TransactionOutput,
-    VerificationKeyHash,
+    VerificationKeyHash, Network,
 )
 
 from src.on_chain import vesting
 from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
+from src.utils.contracts import get_contract
 
 
 @click.command()
@@ -47,11 +45,7 @@ def main(name: str, beneficiary: str, amount: int, wait_time: int):
         deadline=int(time.time() + wait_time) * 1000,  # must be in milliseconds
     )
 
-    script_path = Path("./build/vesting/testnet.addr")
-
-    # Load script info
-    with open(script_path) as f:
-        script_address = Address.from_primitive(f.read())
+    _, _, script_address = get_contract("vesting")
 
     # Make datum
     datum = params
@@ -74,7 +68,10 @@ def main(name: str, beneficiary: str, amount: int, wait_time: int):
     context.submit_tx(signed_tx.to_cbor())
 
     print(f"transaction id: {signed_tx.id}")
-    print(f"Cardanoscan: https://preview.cexplorer.io/tx/{signed_tx.id}")
+    if network == Network.TESTNET:
+        print(f"Cexplorer: https://preview.cexplorer.io/tx/{signed_tx.id}")
+    else:
+        print(f"Cexplorer: https://cexplorer.io/tx/{signed_tx.id}")
 
 
 if __name__ == "__main__":
