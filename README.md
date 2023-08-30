@@ -57,10 +57,23 @@ poetry install
 poetry shell
 ```
 
-5. Set up ogmios. 
+5. Set up [ogmios](https://ogmios.dev/) and optionally [kupo](https://cardanosolutions.github.io/kupo/).
 
 On demeter.run, simply add the Ogmios Extension for the Preview network
 through the project console website (the page that shows you demeter.run project -> Connected Extensions -> Browse Extensions -> Cardano Ogmios)
+If you want to add kupo, use the Kupo Extension as well.
+
+Make sure the following environment variables are set (defaults are displayed):
+
+```bash
+OGMIOS_API_HOST=localhost
+OGMIOS_API_PORT=1337
+OGMIOS_API_PROTOCOL=ws
+
+KUPO_API_HOST=None
+KUPO_API_PORT=80
+KUPO_API_PROTOCOL=http
+```
 
 ## Running the scripts
 
