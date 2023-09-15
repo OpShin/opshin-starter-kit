@@ -42,9 +42,8 @@ In Windows, you can do this by copying the `python.exe` file to `python3.exe` in
 On demeter.run or Linux/Ubuntu run 
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
-echo 'export PATH=/config/.local/bin:$PATH' >> ~/.bashrc
-bash
 ```
+Follow the instructions diplayed to add poetry to your local shell.
 
 Otherwise, follow the official documentation [here](https://python-poetry.org/docs/#installation).
 
