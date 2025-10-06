@@ -29,34 +29,36 @@ hosts tooling to interact with the contract.
 ## Setup
 
 
-1. Install Python 3.8, 3.9 or 3.10.
-
-On demeter.run or Linux/Ubuntu, this version of python is usually already pre-installed. You can skip this step.
-For other Operating Systems, you can download the installer [here](https://www.python.org/downloads/release/python-3810/).
-
-2. Ensure `python3 --version` works in your command line. Open a Terminal in the browser VSCode interface (F1 -> Terminal: Create New Terminal)
-In Windows, you can do this by copying the `python.exe` file to `python3.exe` in your `PATH` environment variable.
-
-3. Install python poetry.
+1. Install uv.
 
 On demeter.run or Linux/Ubuntu run 
 ```bash
-curl -sSL https://install.python-poetry.org | python3 -
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-Follow the instructions diplayed to add poetry to your local shell.
+Follow the instructions diplayed to add uv to your local shell.
 
-Otherwise, follow the official documentation [here](https://python-poetry.org/docs/#installation).
+Otherwise, follow the official documentation [here](https://docs.astral.sh/uv/getting-started/installation/).
 
+2. Set up a virtual environment and install the required packages.
 
-4. Install a python virtual environment with poetry:
 ```bash
-# install python dependencies
-poetry install
-# run a shell with the virtual environment activated
-poetry shell
+uv python install
+uv venv
+source .venv/bin/activate
 ```
 
-5. Set up [ogmios](https://ogmios.dev/) and optionally [kupo](https://cardanosolutions.github.io/kupo/).
+2. Alternatively set up Ogmios or Blockfrost
+
+#### Set up Blockfrost
+
+Follow the instructions on [Blockfrost](https://blockfrost.io/) to create a free account and get an API key for the preview network.
+Make sure the following environment variables are set (defaults are displayed):
+
+```bash
+export BLOCKFROST_API_KEY="previewyourkey"
+```
+
+#### Set up [ogmios](https://ogmios.dev/) and optionally [kupo](https://cardanosolutions.github.io/kupo/).
 
 On demeter.run, simply add the Ogmios Extension for the Preview network
 through the project console website (the page that shows you demeter.run project -> Connected Extensions -> Browse Extensions -> Cardano Ogmios)
@@ -65,26 +67,26 @@ If you want to add kupo, use the Kupo Extension as well.
 Make sure the following environment variables are set (defaults are displayed):
 
 ```bash
-OGMIOS_API_HOST=localhost
-OGMIOS_API_PORT=1337
-OGMIOS_API_PROTOCOL=ws
+export OGMIOS_API_HOST=localhost
+export OGMIOS_API_PORT=1337
+export OGMIOS_API_PROTOCOL=ws
 
-KUPO_API_HOST=None
-KUPO_API_PORT=80
-KUPO_API_PROTOCOL=http
+export KUPO_API_HOST=None
+export KUPO_API_PORT=80
+export KUPO_API_PROTOCOL=http
 ```
 
 ## Running the scripts
 
-Once you have entered the poetry shell, you can start interacting with the contract through the prepared scripts.
+Once you have set up uv, you can start interacting with the contract through the prepared scripts.
 
 First, we have to build the vesting contract and generate two key pairs, one for the
 owner of funds and one for the intended beneficiary.
 
 ```bash
-python3 scripts/build.py
-python3 scripts/create_key_pair.py owner
-python3 scripts/create_key_pair.py beneficiary
+uv run scripts/build.py
+uv run scripts/create_key_pair.py owner
+uv run scripts/create_key_pair.py beneficiary
 ```
 
 Make sure that the owner is loaded up with some testnet ada before proceeding,

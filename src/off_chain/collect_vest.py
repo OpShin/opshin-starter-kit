@@ -13,13 +13,14 @@ from pycardano import (
 from src.on_chain import vesting
 from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
 from src.utils.contracts import get_contract
+from src.utils.network import get_chain_context
 
 
 @click.command()
 @click.argument("name")
 def main(name: str):
     # Load chain context
-    context = OgmiosChainContext(ogmios_url, network=network, kupo_url=kupo_url)
+    context = get_chain_context()
 
     script_cbor, script_hash, script_address = get_contract("vesting")
 

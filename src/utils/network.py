@@ -12,4 +12,36 @@ kupo_port = os.getenv("KUPO_API_PORT", "80")
 kupo_protocol = os.getenv("KUPO_API_PROTOCOL", "http")
 kupo_url = f"{kupo_protocol}://{kupo_host}:{kupo_port}" if kupo_host is not None else None
 
+blockfrost_key = os.getenv("BLOCKFROST_API_KEY", None)
+
 network = Network.TESTNET
+
+def get_chain_context():
+    from pycardano import (
+        BlockFrostChainContext,
+        KupoOgmiosV6ChainContext,
+        OgmiosV6ChainContext,
+    )
+
+    if blockfrost_key is not None:
+        return BlockFrostChainContext(
+            project_id=blockfrost_key,
+            network=network,
+        )
+    elif kupo_host is not None:
+        return KupoOgmiosV6ChainContext(
+            host=ogmios_host,
+            port=int(ogmios_port),
+            path="",
+            secure=False,
+            network=network,
+            kupo_url=kupo_url,
+        )
+    else:
+        return OgmiosV6ChainContext(
+            host=ogmios_host,
+            port=int(ogmios_port),
+            path="",
+            network=network,
+        )
+
