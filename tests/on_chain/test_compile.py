@@ -8,6 +8,6 @@ def test_vesting_compile():
     path = Path(vesting.__file__).absolute()
     with open(path, "r") as f:
         source_code = f.read()
-    source_ast = compiler.parse(source_code)
+    source_ast = compiler.parse(source_code, filename=path.name)
     code = compiler.compile(source_ast)
     print(code.dumps())
