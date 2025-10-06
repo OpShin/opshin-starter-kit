@@ -121,3 +121,20 @@ python3 src/off_chain/collect_vest.py beneficiary
 
 That's it! You successfully compiled a Smart Contract on cardano and interacted with it through off-chain tooling.
 Feel free to dive into the provided scripts and start customizing them for your needs.
+
+
+### Typical issues
+
+If you see the following errors when running the scripts, don't panic, they are temporary issues when the blockchain has not yet included your previous transactions.
+```
+pycardano.exception.TransactionFailedException: Failed to submit transaction. Error code: 400. Error message: {"contents":{"contents":{"contents":{"era":"ShelleyBasedEraConway","error":["ConwayUtxowFailure (UtxoFailure (BadInputsUTxO (fromList [TxIn (TxId {unTxId = SafeHash \"5033df02e3cb82488d8cf46fbe18c783c586320cdcb43b77e8d88df5e50ccbc8\"}) (TxIx {unTxIx = 1})])))","ConwayUtxowFailure (UtxoFailure (ValueNotConservedUTxO (Mismatch {mismatchSupplied = MaryValue (Coin 0) (MultiAsset (fromList [])), mismatchExpected = MaryValue (Coin 9936335092) (MultiAsset (fromList []))})))"],"kind":"ShelleyTxValidationError"},"tag":"TxValidationErrorInCardanoMode"},"tag":"TxCmdTxSubmitValidationError"},"tag":"TxSubmitFail"}
+```
+This means that the transaction you are trying to submit is invalid, because the previous transaction has not yet been included in a block.
+Just wait a few minutes and try again, it should work after a short while.
+
+```
+AssertionError: No script UTxOs found!
+```
+This means that the script UTxO you are trying to spend from does not exist.
+This can happen if the transaction creating the script UTxO has not yet been included in a
+block on the blockchain. Retry in a few minutes.
