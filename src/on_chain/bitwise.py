@@ -1,39 +1,37 @@
 #!opshin
 from opshin.prelude import *
-from opshin.std.math import *
 
-EIGHT_BIT_POWERS = [1, 2, 4, 8, 16, 32, 64, 128]
-
-
-def xor_8bit(a: int, b: int) -> int:
-    result = 0
-    for power in EIGHT_BIT_POWERS:
-        bit_a = (a // power) % 2
-        bit_b = (b // power) % 2
-        bit_and = (bit_a + bit_b) % 2
-        result = result + bit_and * power
-    return result
+@wraps_builtin
+def integer_to_byte_string(big_endian: bool, width: int, val: int) -> bytes:
+    """Returns the integer represented by a bytestring.
+    Width controls the number of bytes used. If width is 0, the minimum number of bytes is used.
+    Big_endian controls the endianness."""
+    pass
 
 
-def xor_bytestring(a: bytes, b: bytes) -> bytes:
-    """Returns the bitwise AND of two bytestrings, padding the shorter one with leading zeros"""
-    max_len = max([len(a), len(b)])
-    a = a.rjust(max_len, b"\x00")
-    b = b.rjust(max_len, b"\x00")
-    c = b""
-    for i in range(max_len):
-        j = max_len - i - 1
-        c = cons_byte_string(xor_8bit(a[j], b[j]), c)
-    return c
+@wraps_builtin
+def byte_string_to_integer(big_endian: bool, a: bytes) -> int:
+    """Returns the representation of an integer as a bytestring. Undoes integer_to_byte_string."""
+    pass
+
+@wraps_builtin
+def xor_byte_string(pad: bool, a: bytes, b: bytes) -> bytes:
+    """Logical XOR applied to two bytearrays. The first argument indicates whether padding semantics should be used. If this argument is False, truncation semantics are used instead."""
+    pass
 
 
-def validator(datum: int, redeemer: int, context: ScriptContext) -> None:
+
+def validator(context: ScriptContext) -> None:
     """
     A contract that checks whether the bitwise AND of the datum and redeemer is zero.
     """
-    datum_bytes = bytes_big_from_unsigned_int(datum)
-    redeemer_bytes = bytes_big_from_unsigned_int(redeemer)
+    print(context.to_cbor().hex())
+    datum: int = own_datum_unsafe(context)
+    redeemer: int = context.redeemer
+    datum_bytes = integer_to_byte_string(True, 0, datum)
+    redeemer_bytes = integer_to_byte_string(True, 0, redeemer)
     # compute the bitwise AND of the two byte arrays
-    xor_bytes = xor_bytestring(datum_bytes, redeemer_bytes)
-    xor_int = unsigned_int_from_bytes_big(xor_bytes)
+    xor_bytes = xor_byte_string(True, datum_bytes, redeemer_bytes)
+    xor_int = byte_string_to_integer(True, xor_bytes)
     assert xor_int == 0, f"Expected bitwise XOR to be zero, but got {xor_int}"
+    return None
