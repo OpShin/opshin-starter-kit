@@ -16,32 +16,22 @@ from src.utils.network import get_chain_context
 
 @click.command()
 @click.argument("name")
-@click.argument("beneficiary")
+@click.argument("challenge")
 @click.option(
     "--amount",
     type=int,
     default=3000000,
     help="Amount of lovelace to send to the script address.",
 )
-@click.option(
-    "--wait_time",
-    type=int,
-    default=0,
-    help="Time until the vesting contract deadline from current time",
-)
-def main(name: str, beneficiary: str, amount: int, wait_time: int):
+def main(name: str, challenge: str, amount: int):
     # Load chain context
     context = get_chain_context()
 
     # Get payment address
     payment_address = get_address(name)
 
-    # Get the beneficiary VerificationKeyHash (PubKeyHash)
-    beneficiary_address = get_address(beneficiary)
-    vkey_hash: VerificationKeyHash = beneficiary_address.payment_part
-
     # Create the vesting datum
-    params = int("10011011", 2)  # bitwise AND operation
+    params = int(challenge, 2)  # bitwise AND operation
 
     _, _, script_address = get_contract("bitwise")
 
