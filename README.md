@@ -138,3 +138,7 @@ AssertionError: No script UTxOs found!
 This means that the script UTxO you are trying to spend from does not exist.
 This can happen if the transaction creating the script UTxO has not yet been included in a
 block on the blockchain. Retry in a few minutes.
+```
+pycardano.exception.TransactionFailedException: Namespace(EvaluationFailure=Namespace(ScriptFailures=Namespace()))
+```
+This means there was an error when evaluating the script. The contract raised an error, maybe due to invalid inputs or due to a program bug. Unfortunately, Blockfrost does not provide detailed error messages for script failures. If you are running your own ogmios and kupo instances, you can get more detailed error messages that help you figuring out what went wrong.
