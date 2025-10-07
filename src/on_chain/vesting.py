@@ -1,4 +1,5 @@
 from opshin.ledger.interval import *
+from opshin.prelude import *
 
 
 @dataclass()
@@ -27,6 +28,11 @@ def deadline_reached(params: VestingParams, context: ScriptContext) -> bool:
     return is_after(params.deadline, context.transaction.validity_range)
 
 
-def validator(datum: VestingParams, redeemer: None, context: ScriptContext) -> None:
+def validator(context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Spending)
+    own_utxo = own_spent_utxo(context.transaction.inputs, purpose)
+    datum: VestingParams = resolve_datum_unsafe(own_utxo, context.transaction)
     assert signed_by_beneficiary(datum, context), "beneficiary's signature missing"
     assert deadline_reached(datum, context), "deadline not reached"
+    return None
