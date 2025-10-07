@@ -23,12 +23,12 @@ def get_chain_context():
         OgmiosV6ChainContext,
     )
 
-    if blockfrost_key is not None:
+    if blockfrost_key:
         return BlockFrostChainContext(
             project_id=blockfrost_key,
             network=network,
         )
-    elif kupo_host is not None:
+    elif kupo_host:
         return KupoOgmiosV6ChainContext(
             host=ogmios_host,
             port=int(ogmios_port),

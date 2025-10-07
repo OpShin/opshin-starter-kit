@@ -1,14 +1,15 @@
 from opshin.ledger.interval import *
+from opshin.prelude import *
 
 
 @dataclass()
 class VestingParams(PlutusData):
-    beneficiary: PubKeyHash
+    beneficiary: bytes
     deadline: POSIXTime
 
 
 def signed_by_beneficiary(params: VestingParams, context: ScriptContext) -> bool:
-    return params.beneficiary in context.tx_info.signatories
+    return params.beneficiary in context.transaction.signatories
 
 
 def is_after(deadline: POSIXTime, valid_range: POSIXTimeRange) -> bool:
@@ -24,9 +25,14 @@ def deadline_reached(params: VestingParams, context: ScriptContext) -> bool:
     # so the current execution time is always within `valid_range`.
     # Therefore, to make all possible execution times occur after the deadline,
     # we need to make sure the whole `valid_range` interval occurs after the `deadline`.
-    return is_after(params.deadline, context.tx_info.valid_range)
+    return is_after(params.deadline, context.transaction.validity_range)
 
 
-def validator(datum: VestingParams, redeemer: None, context: ScriptContext) -> None:
+def validator(context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Spending)
+    own_utxo = own_spent_utxo(context.transaction.inputs, purpose)
+    datum: VestingParams = resolve_datum_unsafe(own_utxo, context.transaction)
     assert signed_by_beneficiary(datum, context), "beneficiary's signature missing"
     assert deadline_reached(datum, context), "deadline not reached"
+    return None
