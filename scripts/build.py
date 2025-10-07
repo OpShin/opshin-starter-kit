@@ -1,11 +1,13 @@
 import subprocess
 from pathlib import Path
 
-from src.on_chain import vesting
+from src.on_chain import vesting, bitwise
 
 
 def main():
     script = Path(vesting.__file__).absolute()
+    subprocess.run(f"opshin build {script}".split())
+    script = Path(bitwise.__file__).absolute()
     subprocess.run(f"opshin build {script}".split())
 
 
