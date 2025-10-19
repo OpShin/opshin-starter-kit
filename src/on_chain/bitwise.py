@@ -25,7 +25,6 @@ def validator(context: ScriptContext) -> None:
     """
     A contract that checks whether the bitwise AND of the datum and redeemer is zero.
     """
-    print(context.to_cbor().hex())
     datum: int = own_datum_unsafe(context)
     redeemer: int = context.redeemer
     datum_bytes = integer_to_byte_string(True, 0, datum)
@@ -34,4 +33,3 @@ def validator(context: ScriptContext) -> None:
     xor_bytes = xor_byte_string(True, datum_bytes, redeemer_bytes)
     xor_int = byte_string_to_integer(True, xor_bytes)
     assert xor_int == 0, f"Expected bitwise XOR to be zero, but got {xor_int}"
-    return None

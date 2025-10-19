@@ -35,4 +35,3 @@ def validator(context: ScriptContext) -> None:
     datum: VestingParams = resolve_datum_unsafe(own_utxo, context.transaction)
     assert signed_by_beneficiary(datum, context), "beneficiary's signature missing"
     assert deadline_reached(datum, context), "deadline not reached"
-    return None

@@ -25,7 +25,7 @@ include = ["src"]
 include = ["src"]
 
 [tool.uv.sources]
-opshin = { git = "https://github.com/OpShin/opshin.git" , branch="feat/plutus-v3"}
+opshin = { git = "https://github.com/OpShin/opshin.git" , branch="dev"}
 
 [build-system]
 requires = ["hatchling"]
