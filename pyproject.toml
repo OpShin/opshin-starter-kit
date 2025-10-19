@@ -25,7 +25,7 @@ include = ["src"]
 include = ["src"]
 
 [tool.uv.sources]
-opshin = { git = "https://github.com/OpShin/opshin.git" , branch="dev"}
+opshin = { git = "https://github.com/OpShin/opshin.git" , tag="0.26.1"}
 
 [build-system]
 requires = ["hatchling"]
