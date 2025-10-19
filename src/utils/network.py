@@ -14,7 +14,7 @@ kupo_url = f"{kupo_protocol}://{kupo_host}:{kupo_port}" if kupo_host is not None
 
 blockfrost_key = os.getenv("BLOCKFROST_API_KEY", None)
 
-network = Network.TESTNET
+network = Network.MAINNET
 
 def get_chain_context():
     from pycardano import (
