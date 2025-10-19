@@ -11,6 +11,7 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
+from src.on_chain.bitwise import BitwiseDatum
 from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
 from src.utils.contracts import get_contract
 from src.utils.network import get_chain_context
@@ -27,13 +28,19 @@ def main(name: str):
 
     # Get payment address
     payment_address = get_address(name)
+    payment_info = get_signing_info(name)
+    owner = payment_info[0].hash().to_primitive()
 
     # Find a script UTxO
     utxo_to_spend = None
     for utxo in context.utxos(str(script_address)):
         if utxo.output.datum and isinstance(utxo.output.datum, RawCBOR):
-            params = uplc.ast.data_from_cbor(utxo.output.datum.cbor)
-            if not isinstance(params, uplc.ast.PlutusInteger):
+            params = utxo.output.datum.cbor
+            try:
+                params = BitwiseDatum.from_cbor(params)
+            except DeserializeException:
+                continue
+            if params.owner != owner:
                 continue
             params = params.value
             utxo_to_spend = utxo

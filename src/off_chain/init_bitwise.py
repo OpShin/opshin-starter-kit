@@ -9,6 +9,7 @@ from pycardano import (
 )
 
 from src.on_chain import vesting
+from src.on_chain.bitwise import BitwiseDatum
 from src.utils import get_signing_info, get_address, ogmios_url, network, kupo_url
 from src.utils.contracts import get_contract
 from src.utils.network import get_chain_context
@@ -17,26 +18,31 @@ from src.utils.network import get_chain_context
 @click.command()
 @click.argument("name")
 @click.argument("challenge")
+@click.argument("beneficiary_name")
 @click.option(
     "--amount",
     type=int,
     default=3000000,
     help="Amount of lovelace to send to the script address.",
 )
-def main(name: str, challenge: str, amount: int):
+def main(name: str, challenge: str, beneficiary_name: str, amount: int):
     # Load chain context
     context = get_chain_context()
 
     # Get payment address
     payment_address = get_address(name)
+    beneficiary = get_signing_info(beneficiary_name)[0].hash().to_primitive()
 
     # Create the vesting datum
-    params = int(challenge, 2)  # bitwise AND operation
+    params = int(challenge, 2)
 
     _, _, script_address = get_contract("bitwise")
 
     # Make datum
-    datum = params
+    datum = BitwiseDatum(
+        value=params,
+        owner=beneficiary,
+    )
 
     # Build the transaction
     builder = TransactionBuilder(context)
@@ -57,7 +63,7 @@ def main(name: str, challenge: str, amount: int):
 
     print(f"transaction id: {signed_tx.id}")
     if network == Network.TESTNET:
-        print(f"Cexplorer: https://preview.cexplorer.io/tx/{signed_tx.id}")
+        print(f"Cexplorer: https://preprod.cexplorer.io/tx/{signed_tx.id}")
     else:
         print(f"Cexplorer: https://cexplorer.io/tx/{signed_tx.id}")
 
