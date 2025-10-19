@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pycardano import plutus_script_hash, Address, Network, PlutusV3Script
+from pycardano import plutus_script_hash, Address, Network, PlutusV3Script, PlutusV2Script
 
 from src.utils.network import network
 
@@ -13,7 +13,7 @@ def get_contract(name: str, network=network):
 
     cbor = bytes.fromhex(cbor_hex)
 
-    plutus_script = PlutusV3Script(cbor)
+    plutus_script = PlutusV2Script(cbor)
     script_hash = plutus_script_hash(plutus_script)
     script_address = Address(script_hash, network=network)
     return plutus_script, script_hash, script_address
