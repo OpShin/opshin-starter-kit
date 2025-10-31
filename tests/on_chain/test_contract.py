@@ -1,5 +1,6 @@
 import pytest
-from opshin import compiler
+from opshin import compiler, Nothing
+from opshin.ledger.api_v3 import Spending
 
 from src.on_chain import vesting
 
@@ -17,7 +18,7 @@ def test_signed_by_beneficiary(beneficiary, signatories):
                 [],
                 [],
                 [],
-                {},
+                0,
                 {},
                 [],
                 {},
@@ -33,7 +34,12 @@ def test_signed_by_beneficiary(beneficiary, signatories):
                 {},
                 {},
                 vesting.TxId(b"00"),
+                {},
+                [],
+                0,
+                0,
             ),
+            Nothing(),
             vesting.Spending(vesting.TxOutRef(vesting.TxId(b"00"), 0)),
         ),
     )
