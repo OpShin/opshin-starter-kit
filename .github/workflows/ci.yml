@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Prepare environment
+        run: |
+          uv python install 3.11
+          uv sync --frozen --group dev --python 3.11
+
+      - name: Build contract
+        run: uv run --frozen scripts/build.py
+
+      - name: Regenerate test keys
+        run: |
+          rm -f keys/owner.addr keys/owner.skey keys/owner.vkey
+          rm -f keys/beneficiary.addr keys/beneficiary.skey keys/beneficiary.vkey
+          uv run --frozen scripts/create_key_pair.py owner
+          uv run --frozen scripts/create_key_pair.py beneficiary
+
+      - name: Run tests
+        run: uv run --frozen --group dev pytest
