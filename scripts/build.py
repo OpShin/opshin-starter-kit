@@ -1,8 +1,10 @@
 import subprocess
+import sys
 from pathlib import Path
 
 from src.on_chain import vesting
 from opshin.builder import build as opshin_build, PlutusContract, DEFAULT_CONFIG
+sys.setrecursionlimit(10000)
 
 
 def main():
